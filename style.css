@@ -1,0 +1,975 @@
+/* =========================
+   BASIC
+========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+
+  font-family: Arial, sans-serif;
+
+  color: white;
+
+  background:
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(150, 120, 255, 0.25),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(70, 100, 255, 0.2),
+      transparent 30%
+    ),
+    linear-gradient(180deg, #050316 0%, #0b0830 30%, #15104a 60%, #080720 100%);
+
+  overflow-x: hidden;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+  min-height: 100vh;
+
+  display: none;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 25px;
+}
+
+.page.active {
+  display: flex;
+
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+}
+
+/* =========================
+   NIGHT SKY 🌌
+========================= */
+
+.stars {
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+/* BINTANG KECIL */
+
+.stars::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 2px;
+
+  height: 2px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  box-shadow:
+    5vw 8vh white,
+    12vw 20vh #dcd4ff,
+    18vw 6vh white,
+    24vw 32vh #bfcaff,
+    30vw 14vh white,
+    36vw 42vh #eeeaff,
+    42vw 8vh white,
+    48vw 25vh #c9c0ff,
+    54vw 12vh white,
+    60vw 38vh #d8e1ff,
+    66vw 5vh white,
+    72vw 22vh #c5bcff,
+    78vw 42vh white,
+    84vw 12vh #dce4ff,
+    90vw 30vh white,
+    96vw 8vh #c8c0ff,
+    8vw 55vh #d9d5ff,
+    15vw 70vh white,
+    22vw 48vh #c7d4ff,
+    29vw 80vh white,
+    35vw 60vh #e8e4ff,
+    41vw 72vh white,
+    47vw 55vh #c5c0ff,
+    53vw 88vh white,
+    59vw 65vh #d5dcff,
+    65vw 78vh white,
+    71vw 58vh #c8c0ff,
+    77vw 88vh white,
+    83vw 68vh #e0e4ff,
+    89vw 82vh white,
+    95vw 60vh #c9c3ff;
+
+  animation: twinkle 3s infinite alternate;
+}
+
+/* BINTANG BESAR */
+
+.stars::after {
+  content: "✦   ✧       ✦       ✧   ✦      ✧       ✦";
+
+  position: absolute;
+
+  top: 8%;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: 14px;
+
+  letter-spacing: 35px;
+
+  line-height: 120px;
+
+  opacity: 0.7;
+
+  animation: starFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.35;
+
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: scale(1.2);
+  }
+}
+
+@keyframes starFloat {
+  from {
+    transform: translateY(0);
+
+    opacity: 0.45;
+  }
+
+  to {
+    transform: translateY(-15px);
+
+    opacity: 0.9;
+  }
+}
+
+/* =========================
+   MOON 🌙
+========================= */
+
+.moon {
+  position: fixed;
+
+  top: 7%;
+
+  right: 10%;
+
+  font-size: clamp(50px, 8vw, 90px);
+
+  color: #fffde7;
+
+  filter: drop-shadow(0 0 20px rgba(255, 250, 200, 0.8));
+
+  z-index: -1;
+
+  animation: moonGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes moonGlow {
+  from {
+    filter: drop-shadow(0 0 10px rgba(255, 250, 200, 0.5));
+  }
+
+  to {
+    filter: drop-shadow(0 0 30px rgba(255, 250, 200, 0.9));
+  }
+}
+
+/* =========================
+   PIN
+========================= */
+
+.pin-container {
+  width: min(90vw, 400px);
+
+  text-align: center;
+
+  padding: 35px;
+
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.pin-container h1 {
+  font-size: clamp(28px, 6vw, 42px);
+
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  opacity: 0.7;
+
+  margin-bottom: 25px;
+}
+
+#pinDisplay {
+  width: 100%;
+
+  height: 60px;
+
+  border: none;
+
+  outline: none;
+
+  border-radius: 18px;
+
+  margin-bottom: 20px;
+
+  text-align: center;
+
+  font-size: 25px;
+
+  letter-spacing: 10px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  color: white;
+}
+
+.keypad {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+}
+
+.keypad button {
+  height: 60px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(10px);
+
+  color: white;
+
+  font-size: 21px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.keypad button:hover {
+  transform: translateY(-4px);
+
+  background: rgba(130, 100, 255, 0.3);
+}
+
+.keypad button:active {
+  transform: scale(0.88);
+}
+
+.clear-btn {
+  background: rgba(255, 100, 150, 0.15) !important;
+}
+
+.enter-btn {
+  background: rgba(100, 170, 255, 0.2) !important;
+}
+
+#pinMessage {
+  min-height: 25px;
+
+  margin-top: 18px;
+}
+
+/* =========================
+   CAKE 🎂
+========================= */
+
+.cake-container {
+  text-align: center;
+}
+
+.cake-container h1 {
+  font-size: clamp(28px, 6vw, 45px);
+
+  margin-bottom: 10px;
+}
+
+#candleText {
+  opacity: 0.8;
+
+  margin-bottom: 15px;
+}
+
+.cake-area {
+  width: min(90vw, 420px);
+
+  height: 370px;
+
+  position: relative;
+
+  margin: auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-end;
+
+  align-items: center;
+}
+
+/* =========================
+   LILIN 17
+========================= */
+
+.candle-group {
+  position: absolute;
+
+  top: 10px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  z-index: 10;
+
+  cursor: pointer;
+
+  user-select: none;
+}
+
+.number-candles {
+  display: flex;
+
+  gap: 8px;
+
+  font-family: Georgia, serif;
+
+  font-size: 70px;
+
+  font-weight: bold;
+
+  line-height: 1;
+}
+
+.number-candles span {
+  background: linear-gradient(180deg, white, #c0adff, #745cff);
+
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+  color: transparent;
+
+  filter: drop-shadow(0 0 10px #8c73ff);
+}
+
+.flame {
+  font-size: 38px;
+
+  height: 45px;
+
+  animation: flameDance 0.5s infinite alternate;
+}
+
+@keyframes flameDance {
+  from {
+    transform: scale(1) rotate(-4deg);
+  }
+
+  to {
+    transform: scale(1.15) rotate(4deg);
+  }
+}
+
+.flame.off {
+  opacity: 0;
+
+  transform: translateY(-25px) scale(0);
+}
+
+/* =========================
+   CAKE
+========================= */
+
+.cake {
+  width: min(80vw, 340px);
+
+  height: 230px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-end;
+
+  align-items: center;
+
+  filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.3));
+}
+
+/* TOP */
+
+.cake-top {
+  position: relative;
+
+  width: 72%;
+
+  height: 55px;
+
+  border-radius: 50% 50% 15px 15px;
+
+  background: linear-gradient(180deg, #ffffff, #ddd3ff);
+
+  z-index: 3;
+}
+
+.cream {
+  position: absolute;
+
+  width: 35px;
+
+  height: 35px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, white, #cbbaff);
+
+  top: -17px;
+}
+
+.cream-1 {
+  left: 12%;
+}
+
+.cream-2 {
+  left: 45%;
+}
+
+.cream-3 {
+  right: 12%;
+}
+
+/* MIDDLE */
+
+.cake-middle {
+  position: relative;
+
+  width: 86%;
+
+  height: 75px;
+
+  background: linear-gradient(135deg, #a77cff, #6955df);
+
+  border-radius: 12px;
+
+  z-index: 2;
+}
+
+.cream-drip {
+  position: absolute;
+
+  top: -10px;
+
+  width: 55px;
+
+  height: 35px;
+
+  border-radius: 0 0 30px 30px;
+
+  background: linear-gradient(180deg, white, #d8cbff);
+}
+
+.drip-1 {
+  left: 12%;
+}
+
+.drip-2 {
+  left: 45%;
+}
+
+.drip-3 {
+  right: 12%;
+}
+
+.sprinkles {
+  position: absolute;
+
+  bottom: 18px;
+
+  width: 100%;
+
+  font-size: 22px;
+
+  letter-spacing: 8px;
+
+  color: #e0d7ff;
+}
+
+/* BOTTOM */
+
+.cake-bottom {
+  position: relative;
+
+  width: 100%;
+
+  height: 90px;
+
+  border-radius: 10px 10px 25px 25px;
+
+  background: linear-gradient(135deg, #7759e8, #3f72dc);
+
+  z-index: 1;
+}
+
+.cream-line {
+  position: absolute;
+
+  top: 18px;
+
+  left: 5%;
+
+  width: 90%;
+
+  height: 15px;
+
+  border-radius: 20px;
+
+  background: linear-gradient(90deg, white, #d6c8ff, white);
+}
+
+.cake-dots {
+  position: absolute;
+
+  bottom: 18px;
+
+  width: 100%;
+
+  text-align: center;
+
+  color: #d9cfff;
+
+  font-size: 25px;
+
+  letter-spacing: 8px;
+}
+
+/* =========================
+   CAKE DISAPPEAR
+========================= */
+
+.cake-container.disappear {
+  animation: cakeDisappear 0.8s forwards;
+}
+
+@keyframes cakeDisappear {
+  to {
+    opacity: 0;
+
+    transform: scale(0.5) translateY(50px);
+  }
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-container {
+  text-align: center;
+}
+
+.letter-container h1 {
+  font-size: clamp(25px, 6vw, 42px);
+
+  margin-bottom: 10px;
+}
+
+.letter-hint {
+  opacity: 0.7;
+
+  margin-bottom: 30px;
+}
+
+/* =========================
+   WHITE LETTER
+========================= */
+
+.aesthetic-letter {
+  position: relative;
+
+  width: min(80vw, 360px);
+
+  height: 230px;
+
+  margin: auto;
+
+  cursor: pointer;
+
+  transition: 0.5s;
+}
+
+.aesthetic-letter:hover {
+  transform: translateY(-10px) rotate(-1deg);
+}
+
+.letter-paper {
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(135deg, white, #f5f2ff);
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    0 0 30px rgba(150, 120, 255, 0.2);
+}
+
+/* DEKORASI */
+
+.letter-paper::before {
+  content: "✦";
+
+  position: absolute;
+
+  top: 15px;
+
+  left: 20px;
+
+  font-size: 22px;
+
+  color: #9a7cff;
+}
+
+.letter-paper::after {
+  content: "✦";
+
+  position: absolute;
+
+  bottom: 15px;
+
+  right: 20px;
+
+  font-size: 22px;
+
+  color: #6b9cff;
+}
+
+/* GARIS */
+
+.letter-lines {
+  position: absolute;
+
+  left: 40px;
+
+  right: 40px;
+
+  top: 75px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.letter-lines span {
+  height: 2px;
+
+  width: 100%;
+
+  background: linear-gradient(90deg, #dcd3ff, #c9ddff);
+}
+
+/* TENGAH */
+
+.letter-ribbon {
+  position: absolute;
+
+  left: 50%;
+
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 65px;
+
+  height: 65px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: linear-gradient(135deg, #8c6cff, #5897ff);
+
+  color: white;
+
+  font-size: 30px;
+
+  box-shadow: 0 8px 25px rgba(100, 80, 220, 0.35);
+}
+
+/* STEMPEL */
+
+.letter-stamp {
+  position: absolute;
+
+  right: 25px;
+
+  top: 25px;
+
+  width: 45px;
+
+  height: 45px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: #eee9ff;
+
+  border: 2px dashed #9d88e8;
+}
+
+/* SURAT MENGHILANG */
+
+.aesthetic-letter.open {
+  transform: scale(0.8) translateY(-30px);
+
+  opacity: 0;
+}
+
+/* =========================
+   ISI SURAT
+========================= */
+
+.letter-content {
+  position: fixed;
+
+  inset: 0;
+
+  display: none;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 20px;
+
+  background: rgba(5, 0, 25, 0.82);
+
+  backdrop-filter: blur(15px);
+
+  z-index: 20;
+}
+
+.letter-content.show {
+  display: flex;
+
+  animation: fadeIn 0.7s;
+}
+
+/* KERTAS */
+
+.paper {
+  position: relative;
+
+  width: min(90vw, 600px);
+
+  max-height: 85vh;
+
+  overflow-y: auto;
+
+  padding: clamp(30px, 6vw, 55px);
+
+  border-radius: 15px;
+
+  background: linear-gradient(135deg, white, #faf9ff);
+
+  color: #24184f;
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.paper::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 10px;
+
+  border: 1px solid #e5defc;
+
+  border-radius: 10px;
+
+  pointer-events: none;
+}
+
+.paper h2 {
+  color: #6546db;
+
+  font-family: Georgia, serif;
+
+  font-size: clamp(28px, 6vw, 42px);
+
+  margin-bottom: 25px;
+}
+
+.paper p {
+  line-height: 1.8;
+
+  margin-bottom: 18px;
+
+  font-size: clamp(14px, 2.5vw, 17px);
+}
+
+.paper-decoration {
+  color: #8a72ed;
+
+  font-size: 25px;
+}
+
+.signature {
+  text-align: right;
+
+  font-style: italic;
+
+  margin-top: 30px;
+}
+
+/* CLOSE */
+
+.close-letter {
+  position: absolute;
+
+  top: 15px;
+
+  right: 20px;
+
+  border: none;
+
+  background: none;
+
+  font-size: 30px;
+
+  color: #6546db;
+
+  cursor: pointer;
+}
+
+/* VOICE NOTE */
+
+.voice-note {
+  margin-top: 30px;
+
+  padding: 20px;
+
+  border-radius: 15px;
+
+  background: #f0ecff;
+}
+
+.voice-note p {
+  color: #6546db;
+
+  font-weight: bold;
+}
+
+.voice-note audio {
+  width: 100%;
+}
+
+/* =========================
+   MOBILE 📱
+========================= */
+
+@media (max-width: 600px) {
+  .pin-container {
+    padding: 25px;
+  }
+
+  .cake-area {
+    transform: scale(0.9);
+  }
+
+  .number-candles {
+    font-size: 60px;
+  }
+
+  .paper {
+    padding: 35px 25px;
+  }
+
+  .moon {
+    top: 5%;
+
+    right: 6%;
+  }
+}

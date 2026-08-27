@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>For You 💜</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- =========================
+         BACKGROUND
+    ========================== -->
+
+    <div class="stars"></div>
+
+    <div class="moon">☾</div>
+
+    <!-- =========================
+         HALAMAN PIN
+    ========================== -->
+
+    <section id="pinPage" class="page active">
+      <div class="pin-container">
+        <h1>Enter the code 💜</h1>
+
+        <p class="subtitle">Something special is waiting for you...</p>
+
+        <input
+          type="password"
+          id="pinDisplay"
+          maxlength="6"
+          readonly
+          placeholder="••••••"
+        />
+
+        <div class="keypad">
+          <button onclick="addNumber(1)">1</button>
+          <button onclick="addNumber(2)">2</button>
+          <button onclick="addNumber(3)">3</button>
+
+          <button onclick="addNumber(4)">4</button>
+          <button onclick="addNumber(5)">5</button>
+          <button onclick="addNumber(6)">6</button>
+
+          <button onclick="addNumber(7)">7</button>
+          <button onclick="addNumber(8)">8</button>
+          <button onclick="addNumber(9)">9</button>
+
+          <button class="clear-btn" onclick="clearPin()">C</button>
+
+          <button onclick="addNumber(0)">0</button>
+
+          <button class="enter-btn" onclick="checkPin()">✓</button>
+        </div>
+
+        <p id="pinMessage"></p>
+      </div>
+    </section>
+
+    <!-- =========================
+         HALAMAN KUE
+    ========================== -->
+
+    <section id="cakePage" class="page">
+      <div class="cake-container">
+        <h1>Happy Birthday! 🎂</h1>
+
+        <p id="candleText">Tap three times to blow the candle 🕯️</p>
+
+        <div class="cake-area">
+          <!-- LILIN 17 -->
+
+          <div class="candle-group" onclick="blowCandle()">
+            <div class="flame" id="flame">🔥</div>
+
+            <div class="number-candles">
+              <span>1</span>
+              <span>7</span>
+            </div>
+          </div>
+
+          <!-- KUE -->
+
+          <div class="cake">
+            <!-- ATAS -->
+
+            <div class="cake-top">
+              <div class="cream cream-1"></div>
+
+              <div class="cream cream-2"></div>
+
+              <div class="cream cream-3"></div>
+            </div>
+
+            <!-- TENGAH -->
+
+            <div class="cake-middle">
+              <div class="cream-drip drip-1"></div>
+
+              <div class="cream-drip drip-2"></div>
+
+              <div class="cream-drip drip-3"></div>
+
+              <div class="sprinkles">✦ ✧ ✦ ✧ ✦</div>
+            </div>
+
+            <!-- BAWAH -->
+
+            <div class="cake-bottom">
+              <div class="cream-line"></div>
+
+              <div class="cake-dots">• • • • • • •</div>
+            </div>
+          </div>
+        </div>
+
+        <p id="tapCounter">0 / 3</p>
+      </div>
+    </section>
+
+    <!-- =========================
+         HALAMAN SURAT
+    ========================== -->
+
+    <section id="letterPage" class="page">
+      <div class="letter-container">
+        <h1>A little letter for you 💌</h1>
+
+        <p class="letter-hint">Tap the letter ✨</p>
+
+        <!-- SURAT PUTIH -->
+
+        <div class="aesthetic-letter" id="envelope" onclick="openLetter()">
+          <div class="letter-paper">
+            <div class="letter-ribbon">♡</div>
+
+            <div class="letter-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="letter-stamp">💜</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================
+             ISI SURAT
+        ========================== -->
+
+      <div class="letter-content" id="letterContent">
+        <div class="paper">
+          <button class="close-letter" onclick="closeLetter()">×</button>
+
+          <div class="paper-decoration">✦</div>
+
+          <h2>Dear Ressa...</h2>
+
+          <p>Happy birthday! 🎂</p>
+
+          <p>
+           Udah 17 bae dasar tua, btw yaaa gausah ngejudge websitenya ini juga minta ai udah stress aku and keknya dia juga stress ama aku. Setelin dulu dong musiknya di paling bawah biar ada vibes nya eak.
+          </p>
+
+          <p>
+           Happy birthday yak semoga di umur ini kamu makin pinter, makin sukses, dilancarkan semuanya sama Tuhann.
+           Di umur yang baru ini, aku berharap kamu bisa menemukan lebih banyak hal yang bikin kamu bahagia. Semoga hari-hari kamu dipenuhi orang-orang yang tulus, cerita-cerita baru yang menyenangkan, dan banyak momen kecil yang nantinya bakal kamu ingat dengan senyum. Btw JANGAN ILANGIN SENYUM KAMU INGETT SENYUM ITU IBADAH.
+          </p>
+
+          <p>
+           Jangan takut untuk berekspresi atau takut salah ngomong tapi yah omongan kamu juga harus dijaga sii bikin emosi muluu butt jangan terlalu mikirin orang lain tapi pikirin diri kamu sendiri duluu. JANGAN MAU DI MANFAATIN ORANG.
+          </p>
+
+          <p>
+           Aku mau kamu tetep jadi diri kamu sendiri dan menghargai sejauh apa kamu udah berkembang. Jangan takut buat cerita dan jangan pendem semuanya sendirii, jangan pelit sama diri kamu sendiri yaa. Ga salah mentingin orang lain tapi jangan lupa pentingin diri sendirii dan
+           jangan terlalu kasar sama diri kamu sendirii, kalau udah ngerasa ga kuat gausah di paksainn semua orang juga ngerti kokk.
+          </p>
+
+          <p>
+           Maaf buat di umur kamu yang sekarang ini aku gabisa nemenin kamu tapi aku yakin kamu bisa ngelakuin semuanyaa, banyak-banyak berdoa yaa jangan
+           pernah lupain Tuhan dan keluarga kamuu. Semangat ya buat ngejalanin hidup di umur kamu yang ke 17 dan seterusnyaa.
+          </p>
+
+          <p>
+           Nangis gapapa tapi jangan berlarut-larut yaa, bangkit lagi okk? I know kamu tuu orang yang kuatt.
+          </p>
+
+          <p>
+            udah sii gini doang webnya, maklum pemula
+          </p>
+
+          <p><b>Soo Happy Sweet Seventeen, I hope all your dreams can come true. May happines always
+             found you! I hope you know that you deserve all the good things coming your way. Babayyyyy</b>
+
+</p>
+
+          <!-- MUSIC -->
+<div class="voice-note">
+  <p>🎵 PLAY ME 🎵</p>
+
+  <audio id="Sempurna" controls>
+    <source src="Sempurna - English Version (Lyrics) Tiktok.mp3" type="audio/mpeg" />
+    Your browser does not support audio.
+  </audio>
+</div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
